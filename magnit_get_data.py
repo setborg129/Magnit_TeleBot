@@ -22,7 +22,7 @@ def get_html(url):
 
     try:
         driver.get(url=url)
-        time.sleep(3)
+        time.sleep(4)
         print(driver.current_url)
         while True:
             # Get scroll height
@@ -88,7 +88,6 @@ def get_data(text):
 
 def telegram_bot(token):
     bot = telebot.TeleBot(token)
-
     @bot.message_handler(commands=["start"])
     def start_message(message):
         markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -111,8 +110,6 @@ def telegram_bot(token):
             try:
                 bot.send_message(message.chat.id, 'Вы выбрали Москву !')
                 bot.send_message(message.chat.id, text='Выберите продукт или его фирму !')
-
-
             except Exception as Ex:
                 print(Ex)
         else:
@@ -155,9 +152,7 @@ def telegram_bot(token):
     @bot.message_handler(commands=["reset"])
     def cmd_reset(message):
         bot.send_message(message.chat.id, "Что ж, начнём по-новой.")
-
     bot.polling(none_stop=False)
-
 
 def read_file(name):
     with open(f'../v2/Москва_тест_lower.json', 'r', encoding='utf-8') as f:
