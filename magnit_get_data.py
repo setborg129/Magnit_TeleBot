@@ -31,7 +31,7 @@ def get_html(url):
             match = False
             while (match == False):
                 lastCount = lenOfPage
-                time.sleep(3)
+                time.sleep(4)
                 lenOfPage = driver.execute_script(
                     "window.scrollTo(0, document.body.scrollHeight);var lenOfPage=document.body.scrollHeight;return lenOfPage;")
                 if lastCount == lenOfPage:
